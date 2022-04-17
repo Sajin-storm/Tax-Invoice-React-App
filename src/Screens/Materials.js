@@ -115,7 +115,7 @@ export default function Materials() {
             justifyContent: "center",
           }}
         >
-            <Card id='card' sx={{ minWidth: 500, maxWidth: 700, padding: 1 }}>
+            <Card id='card' sx={{ minWidth: 275, maxWidth: 700, padding: 1 }}>
                 
                 <Paper style={{
                     display: "flex",
