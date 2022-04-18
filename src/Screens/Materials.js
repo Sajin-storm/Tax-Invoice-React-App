@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './Materials.css';
 import { db } from "../firebase-config"
 import { collection, addDoc, getDocs } from "firebase/firestore"
 
@@ -42,6 +41,7 @@ export default function Materials() {
         await addDoc(materialsCollectionRef, { MaterialDescription: newMaterialDescription, HSNCode: Number(newHSNCode), GSTRate: Number(newGSTRate) })
         window.alert('New Material Added');
         document.location.reload(true);
+        
         }   
     }
 
@@ -53,13 +53,12 @@ export default function Materials() {
             setMaterials(data.docs.map((doc) => ({
                 ...doc.data(), id: doc.id
             })))
-            console.log(data)
         }
 
         getMaterials()
         // eslint-disable-next-line
     }, []);
-
+    
     return (
 
         <div>
@@ -82,23 +81,21 @@ export default function Materials() {
           </Typography>
                 </Paper>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 , maxWidth: 800}} aria-label="simple table">
-                    <TableHead>
+                <Table stickyHeader sx={{ minWidth: 650 , maxWidth: 800}} aria-label="simple table">
+                    <TableHead >
                         <TableRow>
-                            <TableCell>Material Description</TableCell>
-                            <TableCell >HSN Code</TableCell>
-                            <TableCell >GST Rate</TableCell>
+                            <TableCell sx={{fontWeight: 'bold'}}>Material Description</TableCell>
+                            <TableCell sx={{fontWeight: 'bold'}}>HSN Code</TableCell>
+                            <TableCell sx={{fontWeight: 'bold'}}>GST Rate</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {materials.map((material) => {
                             return (
-                                <TableRow key={material.MaterialDescription}>
-
+                                <TableRow hover key={material.MaterialDescription}>
                                     <TableCell>{material.MaterialDescription}</TableCell>
                                     <TableCell>{material.HSNCode}</TableCell>
                                     <TableCell>{material.GSTRate * 100}%</TableCell>
-
                                 </TableRow>
                             )
                         })}
@@ -132,7 +129,7 @@ export default function Materials() {
                 <TextField type='number' id="outlined-basic" fullWidth margin="dense" label="HSN Code eg.12340010" variant="outlined" onChange={(event) => { setNewHSNCode(event.target.value) }} />
                 <TextField type='number' id="outlined-basic" fullWidth margin="dense" label="GST Code eq.0.12" variant="outlined" onChange={(event) => { setNewGSTRate(event.target.value) }} />
 
-                <Button variant="contained" onClick={addMaterials} sx={{marginTop:2, marginBottom:2}}>Add Material</Button>
+                <Button variant="contained" onClick={addMaterials} sx={{marginTop:2, marginBottom:2}}>Add</Button>
                 
             </Card>
             </div>

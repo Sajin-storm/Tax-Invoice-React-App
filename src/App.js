@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import Companies from "./Screens/Companies";
-import MainScreen from "./Screens/MainScreen";
 import Materials from './Screens/Materials';
-
+import CustomDrawer from './Components/CustomDrawer'
 //material ui imports
-import { AppBar, Button, CssBaseline, Toolbar, Typography } from "@mui/material";
+import { AppBar, CssBaseline, Toolbar, Typography } from "@mui/material";
+import HomePage from "./Screens/HomePage";
 
 function App() {
      
@@ -14,19 +14,18 @@ function App() {
       <Router>
       <AppBar position="sticky">
       <CssBaseline />
+      
         <Toolbar>
+        <CustomDrawer/>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Robin Enterprises
           </Typography>
-          <Button color="inherit"><Link to="/" style={{color:"white"}}>Home</Link></Button>
-          <Button color="inherit"><Link to="/materials" style={{color:"white"}}>Materials</Link></Button>
-          <Button color="inherit"><Link to="/companies" style={{color:"white"}}>Companies</Link></Button>
-        </Toolbar>
+          </Toolbar>
       </AppBar>
       
       
         <Routes>
-          <Route path="/" element={<MainScreen/>} />
+          <Route path="/" element={<HomePage/>} />
           <Route path="/materials" element={<Materials/>} />
           <Route path="/companies" element={<Companies/>} />
         </Routes>
