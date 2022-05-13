@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import Companies from "./Screens/Companies";
 import Materials from './Screens/Materials';
+import Invoices from "./Screens/Invoices"
 import CustomDrawer from './Components/CustomDrawer'
 //material ui imports
 import { AppBar, CssBaseline, Toolbar, Typography } from "@mui/material";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/materials" element={<Materials/>} />
           <Route path="/companies" element={<Companies/>} />
+          <Route path="/invoices" element={<Invoices/>} />
         </Routes>
       </Router>
     </div>
